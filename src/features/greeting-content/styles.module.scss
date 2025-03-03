@@ -1,0 +1,19 @@
+@use "../../styles/forward.scss" as *;
+
+.image {
+  display: block;
+  width: 376px;
+  height: 376px;
+  object-fit: cover;
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+.imageWrap {
+  max-width: 343px;
+  margin: 33px auto 38px;
+}
+
+.subtitle {
+  margin-bottom: 38px;
+}

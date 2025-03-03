@@ -1,0 +1,8 @@
+@use "../../styles/forward.scss" as *;
+
+.login {
+  min-height: calc(100vh - 97px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}

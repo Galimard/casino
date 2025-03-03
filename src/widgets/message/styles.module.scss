@@ -1,0 +1,28 @@
+@use "../../styles/forward.scss" as *;
+
+.message {
+  padding: 14px 16px;
+  background: $cRedLight;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: $fRegular;
+  line-height: 25px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: $fRegular;
+  line-height: 20px;
+  padding-left: 34px;
+}
