@@ -55,7 +55,7 @@ const Cards: FC<CardsProps> = ({ combination, isFanOut, isFlipped }) => {
               transform: `
                 translate(-50%, -50%)
                 ${isFanOut 
-                  ? `rotate(${(idx - 2) * 15}deg) translate(${(idx - 2) * 25}px, -50px)` 
+                  ? `rotate(${(idx - 2) * 15}deg) translate(${(idx - 2) * 15}px, -50px)` 
                   : `translate(${idx * -5}px, ${idx * -5}px)`
                 }
               `,
