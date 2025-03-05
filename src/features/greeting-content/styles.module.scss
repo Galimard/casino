@@ -2,18 +2,19 @@
 
 .image {
   display: block;
-  width: 376px;
-  height: 376px;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
-  margin-left: -16px;
-  margin-right: -16px;
+  margin: 0 auto;
+  // margin-left: -16px;
+  // margin-right: -16px;
 }
 
 .imageWrap {
   max-width: 343px;
-  margin: 33px auto 38px;
+  margin: 20px auto;
 }
 
 .subtitle {
-  margin-bottom: 38px;
+  margin-bottom: 32px;
 }

@@ -10,7 +10,7 @@
   font-size: 18px;
   font-weight: $fRegular;
   line-height: $lineHeight;
-  color: $cWhite;
+  color: $cWhite !important;
   white-space: nowrap;  
   border-radius: 44px;
   background: $cRed;
@@ -18,7 +18,7 @@
 
   &:focus,
   &:active {
-    color: $cWhite;
+    color: $cWhite !important;
   }
 }
 

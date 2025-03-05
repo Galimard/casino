@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
-import axios from 'axios';
+// import axios from 'axios';
 
 import { Button } from '@widgets/button';
 import { Input } from '@widgets/input';
@@ -48,7 +48,7 @@ export const LoginContent: FC = () => {
   }, [errorInput]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    if (Number(event.target.value) >= 0) setInputValue(event.target.value);
   };
 
   const handleInputFocus = () => {
@@ -62,23 +62,23 @@ export const LoginContent: FC = () => {
       setErrorInput('ID должен содержать от 4 до 8 цифр'); 
     } else { 
       setIsLoaded(false);     
-      const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+      // const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-      axios.post(apiUrl, {
-        method: 'POST',
-        id: inputValue
-      })
-        .then(function (response) {
-          console.log(response);
+      // axios.post(apiUrl, {
+      //   method: 'POST',
+      //   id: inputValue
+      // })
+      //   .then(function (response) {
+      //     console.log(response);
           
-          setIsLoaded(true);
-          navigate("/combination");
-          // setAppState(response.data.result);
-        })
-        .catch(function (error) {
-          console.log(error);
-          setErrorInput('Ошибка соединения');
-        });
+      //     setIsLoaded(true);
+      //     navigate("/combination");
+      //     // setAppState(response.data.result);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //     setErrorInput('Ошибка соединения');
+      //   });
         navigate("/combination"); //временно
     } 
   }

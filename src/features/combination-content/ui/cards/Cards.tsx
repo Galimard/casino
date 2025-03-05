@@ -65,7 +65,7 @@ const Cards: FC<CardsProps> = ({ combination, isFanOut, isFlipped }) => {
               className={classes.card}
               style={{
                 transform: `${isFlipped ? 'rotateX(180deg)' : ''}`,
-                transition: `transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${idx * 100}ms`
+                transition: `transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${(comboObject.cards.length - 1 - idx) * 100}ms`,
               }}
             >
               <div className={classes.back}>
