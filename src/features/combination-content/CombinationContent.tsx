@@ -9,11 +9,21 @@ export const CombinationContent: FC = () => {
   useEffect(() => {
     const randomValue = Math.random() * 100; 
 
-    if (randomValue <= 86.8) {
+    // if (randomValue <= 86.8) {
+    //   setCombination('Пара');
+    // } else if (randomValue <= 95.5) {
+    //   setCombination('Фулл-хаус');
+    // } else if (randomValue <= 99.8) {
+    //   setCombination('Каре');
+    // } else {
+    //   setCombination('Флеш-рояль');
+    // }  
+
+    if (randomValue <= 25) {
       setCombination('Пара');
-    } else if (randomValue <= 95.5) {
+    } else if (randomValue <= 50) {
       setCombination('Фулл-хаус');
-    } else if (randomValue <= 99.8) {
+    } else if (randomValue <= 75) {
       setCombination('Каре');
     } else {
       setCombination('Флеш-рояль');

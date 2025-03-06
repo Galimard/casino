@@ -6,3 +6,9 @@
   flex-direction: column;
   position: relative;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .login {
+    min-height: calc(100vh - 167px);
+  }
+}
