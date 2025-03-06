@@ -15,9 +15,13 @@
   border-radius: 44px;
   background: $cRed;
   width: 100%;
+  -webkit-tap-highlight-color: transparent; /* Убирает серый оверлей */
+  cursor: pointer; /* Важно для iOS! */
+  touch-action: manipulation; /* Ускоряет обработку тапов */
 
   &:focus,
-  &:active {
+  &:active,
+  &:hover {
     color: $cWhite !important;
   }
 }
