@@ -20,11 +20,11 @@ export const CombinationContent: FC = () => {
     // }  
 
     if (randomValue <= 25) {
-      setCombination('Пара');
+      setCombination('Флеш-рояль');
     } else if (randomValue <= 50) {
-      setCombination('Фулл-хаус');
+      setCombination('Флеш-рояль');
     } else if (randomValue <= 75) {
-      setCombination('Каре');
+      setCombination('Флеш-рояль');
     } else {
       setCombination('Флеш-рояль');
     }  

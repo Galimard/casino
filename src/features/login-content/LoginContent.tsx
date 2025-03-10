@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
 // import axios from 'axios';
 
@@ -15,6 +15,7 @@ interface ErrorMessage {
 }
 
 export const LoginContent: FC = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isLoaded, setIsLoaded] = useState(true);
   // const [appState, setAppState] = useState();
   const [inputValue, setInputValue] = useState<string>('');
@@ -58,6 +59,8 @@ export const LoginContent: FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    inputRef.current?.blur();
+
     if (inputValue.length < 4 || inputValue.length > 8) {
       setErrorInput('ID должен содержать от 4 до 8 цифр'); 
     } else { 
@@ -90,7 +93,7 @@ export const LoginContent: FC = () => {
           <h1 className='typography-h1'>Участие в розыгрыше</h1>      
 
           <form onSubmit={event => handleSubmit(event)}>
-            <Input value={ inputValue } onChange={ handleInputChange } onFocus={ handleInputFocus } error={ errorInput } />
+            <Input ref={inputRef} value={ inputValue } onChange={ handleInputChange } onFocus={ handleInputFocus } error={ errorInput } />
 
             {errorInput === '' && 
               <Button
