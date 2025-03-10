@@ -50,10 +50,6 @@ export const LoginContent: FC = () => {
   }, [errorInput]);
 
   useEffect(() => {
-    console.log('window.innerHeight', window.innerHeight);
-    console.log('screen.height', screen.height);
-    console.log('window.visualViewport', window.visualViewport);
-
     const handleResize = () => {
       if (window.visualViewport) {
         setIsKeyboardOpen(window.visualViewport.height < window.innerHeight * 0.85);
@@ -63,11 +59,17 @@ export const LoginContent: FC = () => {
     const handleFocus = () => {
       document.body.style.overflow = "hidden"; // Отключаем скролл при фокусе
       document.documentElement.style.overflow = "hidden";
+      console.log('window.innerHeight', window.innerHeight);
+    console.log('screen.height', screen.height);
+    console.log('window.visualViewport', window.visualViewport);
     };
 
     const handleBlur = () => {
       document.body.style.overflow = ""; // Восстанавливаем скролл
       document.documentElement.style.overflow = "";
+      console.log('window.innerHeight', window.innerHeight);
+    console.log('screen.height', screen.height);
+    console.log('window.visualViewport', window.visualViewport);
     };
 
     if (window.visualViewport) {
