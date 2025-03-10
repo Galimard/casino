@@ -94,16 +94,16 @@ export const LoginContent: FC = () => {
 
           <form onSubmit={event => handleSubmit(event)}>
             <Input ref={inputRef} value={ inputValue } onChange={ handleInputChange } onFocus={ handleInputFocus } error={ errorInput } />
-
-            {errorInput === '' && 
+           
+            {/* {errorInput === '' &&  */}
               <Button
                 text='Играть' 
                 disabled={inputValue === '' ? true : false}  
-                class='login-btn' 
+                class={`login-btn`}
               />
-            }
+            {/* } */}
           </form>      
-
+          
           {error && <Message message={ error } />}
         </div> 
       )}  
