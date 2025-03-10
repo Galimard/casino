@@ -50,12 +50,24 @@ export const LoginContent: FC = () => {
   }, [errorInput]);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsKeyboardOpen(window.innerHeight < screen.height * 0.7);
-    };
+    console.log('window.innerHeight', window.innerHeight);
+    console.log('screen.height', screen.height);
+    console.log('window.visualViewport', window.visualViewport);
+    
+    const handleFocus = () => setIsKeyboardOpen(true);
+    const handleBlur = () => setIsKeyboardOpen(false);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    document.querySelectorAll("input").forEach((el) => {
+      el.addEventListener("focus", handleFocus);
+      el.addEventListener("blur", handleBlur);
+    });
+
+    return () => {
+      document.querySelectorAll("input").forEach((el) => {
+        el.removeEventListener("focus", handleFocus);
+        el.removeEventListener("blur", handleBlur);
+      });
+    };
   }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
