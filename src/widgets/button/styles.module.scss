@@ -14,7 +14,7 @@
   white-space: nowrap;  
   border-radius: 44px;
   background: $cRed;
-  width: 100%;
+  // width: 100%;
   -webkit-tap-highlight-color: transparent; /* Убирает серый оверлей */
   cursor: pointer; /* Важно для iOS! */
   touch-action: manipulation; /* Ускоряет обработку тапов */
@@ -33,8 +33,9 @@
 }
 
 .login-btn {
-  margin-top: auto;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
+  // margin-top: auto;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
 }

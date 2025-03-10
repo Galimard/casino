@@ -8,11 +8,13 @@
 .layout {
   background: #F4F5F6 url('../../assets/images/bg.png') center top no-repeat;
   background-size: contain;
+  height: 100%;
+  position: relative;
   // min-height: 100vh;
 }
 
 .main {
   padding-top: 16px;
   padding-bottom: 24px;
-  min-height: calc(100vh - 97px);
+  // min-height: calc(100vh - 97px);
 }
