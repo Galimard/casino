@@ -139,3 +139,13 @@ a:hover {
     overflow: hidden;
   }
 }
+
+@media (max-width: 576px) {
+  body {
+    position: fixed;
+  }
+}
+
+@viewport {
+  user-zoom: fixed;
+}

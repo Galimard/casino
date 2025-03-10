@@ -164,13 +164,13 @@ export const LoginContent: FC = () => {
             {/* <div style={{ paddingBottom: `${keyboardPadding}px` }}>              */}
               {error ? 
                 <Message message={ error } /> : (
-                <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
+                // <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
                   <Button
                     text='Играть' 
                     disabled={inputValue === '' ? true : false}  
                     class={`login-btn`}
                   />
-                </div>                
+                // </div>                
               )}
             {/* </div> */}
           </form>      
