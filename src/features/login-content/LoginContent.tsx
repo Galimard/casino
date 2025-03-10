@@ -53,21 +53,57 @@ export const LoginContent: FC = () => {
     console.log('window.innerHeight', window.innerHeight);
     console.log('screen.height', screen.height);
     console.log('window.visualViewport', window.visualViewport);
-    
-    const handleFocus = () => setIsKeyboardOpen(true);
-    const handleBlur = () => setIsKeyboardOpen(false);
 
-    document.querySelectorAll("input").forEach((el) => {
+    const handleResize = () => {
+      if (window.visualViewport) {
+        setIsKeyboardOpen(window.visualViewport.height < window.innerHeight * 0.85);
+      }
+    };
+
+    const handleFocus = () => {
+      document.body.style.overflow = "hidden"; // Отключаем скролл при фокусе
+      document.documentElement.style.overflow = "hidden";
+    };
+
+    const handleBlur = () => {
+      document.body.style.overflow = ""; // Восстанавливаем скролл
+      document.documentElement.style.overflow = "";
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    }
+
+    document.querySelectorAll("input, textarea").forEach((el) => {
       el.addEventListener("focus", handleFocus);
       el.addEventListener("blur", handleBlur);
     });
 
     return () => {
-      document.querySelectorAll("input").forEach((el) => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      }
+
+      document.querySelectorAll("input, textarea").forEach((el) => {
         el.removeEventListener("focus", handleFocus);
         el.removeEventListener("blur", handleBlur);
       });
     };
+    
+    // const handleFocus = () => setIsKeyboardOpen(true);
+    // const handleBlur = () => setIsKeyboardOpen(false);
+
+    // document.querySelectorAll("input").forEach((el) => {
+    //   el.addEventListener("focus", handleFocus);
+    //   el.addEventListener("blur", handleBlur);
+    // });
+
+    // return () => {
+    //   document.querySelectorAll("input").forEach((el) => {
+    //     el.removeEventListener("focus", handleFocus);
+    //     el.removeEventListener("blur", handleBlur);
+    //   });
+    // };
   }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
