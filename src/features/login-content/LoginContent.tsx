@@ -93,18 +93,27 @@ export const LoginContent: FC = () => {
           <h1 className='typography-h1'>Участие в розыгрыше</h1>      
 
           <form className={classes.form} onSubmit={event => handleSubmit(event)}>
-            <Input ref={inputRef} value={ inputValue } onChange={ handleInputChange } onFocus={ handleInputFocus } error={ errorInput } />
+            <Input 
+              ref={inputRef} 
+              value={ inputValue } 
+              onChange={ handleInputChange } 
+              onFocus={ handleInputFocus } 
+              error={ errorInput } 
+            />
            
-            {/* {errorInput === '' &&  */}
-              <Button
-                text='Играть' 
-                disabled={inputValue === '' ? true : false}  
-                class='login-btn'
-              />
-            {/* } */}
+            {/* <div style={{ paddingBottom: `${keyboardPadding}px` }}>              */}
+              {error ? 
+                <Message message={ error } /> : (
+                <Button
+                  text='Играть' 
+                  disabled={inputValue === '' ? true : false}  
+                  class='login-btn'
+                />
+              )}
+            {/* </div> */}
           </form>      
 
-          {error && <Message message={ error } />}
+          
         </div> 
       )}  
     </> 
