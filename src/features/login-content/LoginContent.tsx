@@ -99,7 +99,7 @@ export const LoginContent: FC = () => {
               <Button
                 text='Играть' 
                 disabled={inputValue === '' ? true : false}  
-                class={`login-btn`}
+                class='login-btn'
               />
             {/* } */}
           </form>      

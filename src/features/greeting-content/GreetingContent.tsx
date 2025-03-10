@@ -14,7 +14,7 @@ export const GreetingContent: FC = () => {
         
       <h2 className={`typography-h2 ${classes.subtitle}`}>Примите участие в&nbsp;розыгрыше</h2>
 
-      <Button url='/login' text='Начать' disabled={false} class={classes.button} />
+      <Button url='/login' text='Начать' disabled={false} class={'buttonGreeting'} />
     </>  
   );
 }
