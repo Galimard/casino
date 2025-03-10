@@ -22,6 +22,7 @@ export const LoginContent: FC = () => {
   const [errorInput, setErrorInput] = useState<string>('');
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   // выбор ошибки для компонента Message
   useEffect(() => {
@@ -47,6 +48,15 @@ export const LoginContent: FC = () => {
       setError(null);
     }
   }, [errorInput]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsKeyboardOpen(window.innerHeight < screen.height * 0.7);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) >= 0) setInputValue(event.target.value);
@@ -104,11 +114,13 @@ export const LoginContent: FC = () => {
             {/* <div style={{ paddingBottom: `${keyboardPadding}px` }}>              */}
               {error ? 
                 <Message message={ error } /> : (
-                <Button
-                  text='Играть' 
-                  disabled={inputValue === '' ? true : false}  
-                  class='login-btn'
-                />
+                <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
+                  <Button
+                    text='Играть' 
+                    disabled={inputValue === '' ? true : false}  
+                    class={`login-btn`}
+                  />
+                </div>                
               )}
             {/* </div> */}
           </form>      

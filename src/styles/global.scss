@@ -112,6 +112,20 @@ a:hover {
   line-height: $lineHeight;
 }
 
+.down {
+  position: fixed;
+  bottom: 30px;
+  left: 16px;
+  right: 16px;
+}
+
+.raised {
+  position: fixed;
+  bottom: 300px;
+  left: 16px;
+  right: 16px;
+}
+
 .container {
   max-width: 576px;
   width: 100%;
