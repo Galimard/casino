@@ -4,7 +4,7 @@
   min-height: calc(100vh - 147px);
   // display: flex;
   // flex-direction: column;
-  // position: relative;
+  position: relative;
   display: grid;
   grid-template-rows: 34px 1fr;
 }
