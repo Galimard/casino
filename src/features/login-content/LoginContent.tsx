@@ -23,7 +23,6 @@ export const LoginContent: FC = () => {
   const [errorInput, setErrorInput] = useState<string>('');
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
-  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const iosKeyboardHeight = useIOsKeyboardHeight();
 
   // выбор ошибки для компонента Message
@@ -50,16 +49,6 @@ export const LoginContent: FC = () => {
       setError(null);
     }
   }, [errorInput]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const viewportHeight = window.visualViewport?.height || window.innerHeight;
-      setIsKeyboardOpen(viewportHeight < window.innerHeight);
-    };
-  
-    window.visualViewport?.addEventListener('resize', handleResize);
-    return () => window.visualViewport?.removeEventListener('resize', handleResize);
-  }, []);
 
   // useEffect(() => {
   //   const handleResize = () => {
@@ -176,8 +165,7 @@ export const LoginContent: FC = () => {
             <div style={{ 
               marginTop: 'auto', 
               paddingBottom: `${iosKeyboardHeight}px`, 
-              opacity: `${isKeyboardOpen ? 0 : 1}`,
-              transition: 'padding-bottom 0.3s ease, opacity 0.5s ease' 
+              transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>             
               {error ? 
                 <Message message={ error } /> : (
