@@ -26,3 +26,11 @@
   bottom: 0;
   overflow-y: auto;
 }
+
+/* Только для iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+  .main {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+}

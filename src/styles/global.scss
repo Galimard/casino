@@ -147,6 +147,14 @@ a:hover {
   }
 }
 
-@viewport {
-  user-zoom: fixed;
+/* Только для iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    overflow: hidden; /* Блокировка скролла */
+  }
+
+  .container {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
 }
