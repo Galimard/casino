@@ -22,7 +22,7 @@ export const LoginContent: FC = () => {
   const [errorInput, setErrorInput] = useState<string>('');
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
-  // const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   // выбор ошибки для компонента Message
   useEffect(() => {
@@ -49,64 +49,64 @@ export const LoginContent: FC = () => {
     }
   }, [errorInput]);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.visualViewport) {
-  //       setIsKeyboardOpen(window.visualViewport.height < window.innerHeight * 0.85);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.visualViewport) {
+        setIsKeyboardOpen(window.visualViewport.height < window.innerHeight * 0.85);
+      }
+    };
 
-  //   const handleFocus = () => {
-  //     document.body.style.overflow = "hidden"; // Отключаем скролл при фокусе
-  //     document.documentElement.style.overflow = "hidden";
-  //     console.log('window.innerHeight', window.innerHeight);
-  //   console.log('screen.height', screen.height);
-  //   console.log('window.visualViewport', window.visualViewport);
-  //   };
+    const handleFocus = () => {
+      document.body.style.overflow = "hidden"; // Отключаем скролл при фокусе
+      document.documentElement.style.overflow = "hidden";
+      console.log('window.innerHeight', window.innerHeight);
+    console.log('screen.height', screen.height);
+    console.log('window.visualViewport', window.visualViewport);
+    };
 
-  //   const handleBlur = () => {
-  //     document.body.style.overflow = ""; // Восстанавливаем скролл
-  //     document.documentElement.style.overflow = "";
-  //     console.log('window.innerHeight', window.innerHeight);
-  //   console.log('screen.height', screen.height);
-  //   console.log('window.visualViewport', window.visualViewport);
-  //   };
+    const handleBlur = () => {
+      document.body.style.overflow = ""; // Восстанавливаем скролл
+      document.documentElement.style.overflow = "";
+      console.log('window.innerHeight', window.innerHeight);
+    console.log('screen.height', screen.height);
+    console.log('window.visualViewport', window.visualViewport);
+    };
 
-  //   if (window.visualViewport) {
-  //     window.visualViewport.addEventListener("resize", handleResize);
-  //   }
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    }
 
-  //   document.querySelectorAll("input, textarea").forEach((el) => {
-  //     el.addEventListener("focus", handleFocus);
-  //     el.addEventListener("blur", handleBlur);
-  //   });
+    document.querySelectorAll("input, textarea").forEach((el) => {
+      el.addEventListener("focus", handleFocus);
+      el.addEventListener("blur", handleBlur);
+    });
 
-  //   return () => {
-  //     if (window.visualViewport) {
-  //       window.visualViewport.removeEventListener("resize", handleResize);
-  //     }
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      }
 
-  //     document.querySelectorAll("input, textarea").forEach((el) => {
-  //       el.removeEventListener("focus", handleFocus);
-  //       el.removeEventListener("blur", handleBlur);
-  //     });
-  //   };
+      document.querySelectorAll("input, textarea").forEach((el) => {
+        el.removeEventListener("focus", handleFocus);
+        el.removeEventListener("blur", handleBlur);
+      });
+    };
     
-  //   // const handleFocus = () => setIsKeyboardOpen(true);
-  //   // const handleBlur = () => setIsKeyboardOpen(false);
+    // const handleFocus = () => setIsKeyboardOpen(true);
+    // const handleBlur = () => setIsKeyboardOpen(false);
 
-  //   // document.querySelectorAll("input").forEach((el) => {
-  //   //   el.addEventListener("focus", handleFocus);
-  //   //   el.addEventListener("blur", handleBlur);
-  //   // });
+    // document.querySelectorAll("input").forEach((el) => {
+    //   el.addEventListener("focus", handleFocus);
+    //   el.addEventListener("blur", handleBlur);
+    // });
 
-  //   // return () => {
-  //   //   document.querySelectorAll("input").forEach((el) => {
-  //   //     el.removeEventListener("focus", handleFocus);
-  //   //     el.removeEventListener("blur", handleBlur);
-  //   //   });
-  //   // };
-  // }, []);
+    // return () => {
+    //   document.querySelectorAll("input").forEach((el) => {
+    //     el.removeEventListener("focus", handleFocus);
+    //     el.removeEventListener("blur", handleBlur);
+    //   });
+    // };
+  }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) >= 0) setInputValue(event.target.value);
@@ -164,13 +164,13 @@ export const LoginContent: FC = () => {
             {/* <div style={{ paddingBottom: `${keyboardPadding}px` }}>              */}
               {error ? 
                 <Message message={ error } /> : (
-                // <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
+                <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
                   <Button
                     text='Играть' 
                     disabled={inputValue === '' ? true : false}  
                     class={`login-btn`}
                   />
-                // </div>                
+                </div>                
               )}
             {/* </div> */}
           </form>      

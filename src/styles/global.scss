@@ -44,6 +44,7 @@ body {
   color: $cBlack;
   background: #F4F5F6;
   overflow: hidden;
+  touch-action: none;
 }
 
 #root {
