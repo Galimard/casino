@@ -25,6 +25,23 @@ export const LoginContent: FC = () => {
   const navigate = useNavigate();
   const iosKeyboardHeight = useIOsKeyboardHeight();
 
+  useEffect(() => {
+    if (!iosKeyboardHeight) return;
+
+    // Функция, предотвращающая дефолтное поведение (прокрутку)
+    const preventScroll = (e) => {
+      e.preventDefault();
+    };
+
+    // Вешаем обработчик на событие touchmove
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+
+    // Убираем обработчик при размонтировании
+    return () => {
+      document.removeEventListener('touchmove', preventScroll, { passive: false });
+    };
+  }, [iosKeyboardHeight]);
+
   // выбор ошибки для компонента Message
   useEffect(() => {
     if (errorInput === 'ID должен содержать от 4 до 8 цифр') {
