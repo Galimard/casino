@@ -163,7 +163,11 @@ export const LoginContent: FC = () => {
               error={ errorInput } 
             />
            
-            <div style={{ marginTop: 'auto', paddingBottom: `${iosKeyboardHeight}px` }}>             
+            <div style={{ 
+              marginTop: 'auto', 
+              paddingBottom: `${iosKeyboardHeight}px`, 
+              transition: 'paddingBottom 0.3s ease' 
+            }}>             
               {error ? 
                 <Message message={ error } /> : (
                 // <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
