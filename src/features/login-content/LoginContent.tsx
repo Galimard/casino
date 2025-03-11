@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
+import  { useIOsKeyboardHeight }  from  'react-ios-keyboard-viewport' ;
 // import axios from 'axios';
 
 import { Button } from '@widgets/button';
@@ -23,6 +24,7 @@ export const LoginContent: FC = () => {
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
   // const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+  const iosKeyboardHeight = useIOsKeyboardHeight();
 
   // выбор ошибки для компонента Message
   useEffect(() => {
@@ -161,7 +163,7 @@ export const LoginContent: FC = () => {
               error={ errorInput } 
             />
            
-            {/* <div style={{ paddingBottom: `${keyboardPadding}px` }}>              */}
+            <div style={{ paddingBottom: `${iosKeyboardHeight}px` }}>             
               {error ? 
                 <Message message={ error } /> : (
                 // <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
@@ -172,7 +174,7 @@ export const LoginContent: FC = () => {
                   />
                 // </div>                
               )}
-            {/* </div> */}
+            </div>
           </form>      
 
           
