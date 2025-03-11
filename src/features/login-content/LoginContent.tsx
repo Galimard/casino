@@ -166,7 +166,7 @@ export const LoginContent: FC = () => {
             <div style={{ 
               marginTop: 'auto', 
               paddingBottom: `${iosKeyboardHeight}px`, 
-              transition: 'paddingBottom 0.3s ease' 
+              transition: 'padding-bottom 0.3s ease' 
             }}>             
               {error ? 
                 <Message message={ error } /> : (
