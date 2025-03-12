@@ -24,7 +24,6 @@ export const LoginContent: FC = () => {
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
   const iosKeyboardHeight = useIOsKeyboardHeight();
-  console.log(error);
   
   //убираем скролл на айфоне
   useEffect(() => {
@@ -129,7 +128,8 @@ export const LoginContent: FC = () => {
            
             <div className={classes.bottom} style={{ 
               // marginTop: 'auto', 
-              bottom: `${24 + iosKeyboardHeight}px`, 
+              bottom: `150px`, 
+              // bottom: `${24 + iosKeyboardHeight}px`, 
               // paddingBottom: `${24 + iosKeyboardHeight}px`, 
               // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>  

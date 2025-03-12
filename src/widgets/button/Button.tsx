@@ -9,7 +9,9 @@ interface ButtonProps {
   class?: string;
 }
 
-export const Button: FC<ButtonProps> = ({ ...props }) => {         
+export const Button: FC<ButtonProps> = ({ ...props }) => {   
+  console.log(123);
+        
     return (
       <>
         {props.url && props.url !== '' ? 

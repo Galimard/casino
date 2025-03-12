@@ -8,6 +8,7 @@
   display: grid;
   grid-template-rows: 34px 1fr;
   height: 100%;
+  overflow: hidden;
 }
 
 .form {
@@ -15,12 +16,6 @@
   flex-direction: column;
   height: 100%;
   position: relative;
-}
-
-.loginBtn {
-  // margin-top: auto;
-  // margin-top: 20px;
-  width: 100%;
 }
 
 .bottom {
