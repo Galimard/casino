@@ -4,7 +4,7 @@ import classes from './styles.module.scss';
 
 interface ButtonProps {
   url?: string;
-  disabled: boolean;
+  disabled?: boolean;
   text: string;
   class?: string;
 }

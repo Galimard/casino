@@ -134,7 +134,7 @@ export const LoginContent: FC = () => {
             }}>  
               <Button
                 text='Играть' 
-                disabled={inputValue === '' ? true : false}  
+                // disabled={inputValue === '' ? true : false}  
                 // class={`${error ? 'hidden' : ''}`}
               />             
               {error && 
