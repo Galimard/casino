@@ -19,11 +19,11 @@
 }
 
 .bottom {
-  // position: fixed;
+  position: fixed;
   min-height: 56px;
-  // bottom: env(safe-area-inset-bottom, 24px);
   left: 16px;
   right: 16px;
   z-index: 1000;
-  // padding-bottom: 24px;
+  padding-bottom: env(safe-area-inset-bottom, 24px);
+  transition: min-height 0.3s ease;
 }

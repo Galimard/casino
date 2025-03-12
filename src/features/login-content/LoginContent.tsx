@@ -24,6 +24,7 @@ export const LoginContent: FC = () => {
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
   const iosKeyboardHeight = useIOsKeyboardHeight();
+  const [keyboardPadding, setKeyboardPadding] = useState(24);
   
   //убираем скролл на айфоне
   useEffect(() => {
@@ -81,36 +82,6 @@ export const LoginContent: FC = () => {
     if (errorInput !== '') setErrorInput('');
   }
 
-  // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-
-  //   inputRef.current?.blur();
-
-  //   if (inputValue.length < 4 || inputValue.length > 8) {
-  //     setErrorInput('ID должен содержать от 4 до 8 цифр'); 
-  //   } else { 
-  //     setIsLoaded(false);     
-  //     // const apiUrl = 'https://bitrix-api.mantera.digital';
-
-  //     // axios.post(apiUrl, {
-  //     //   method: 'POST',
-  //     //   id: inputValue
-  //     // })
-  //     //   .then(function (response) {
-  //     //     console.log(response);
-          
-  //     //     setIsLoaded(true);
-  //     //     navigate("/combination");
-  //     //     // setAppState(response.data.result);
-  //     //   })
-  //     //   .catch(function (error) {
-  //     //     console.log(error);
-  //     //     setErrorInput('Ошибка соединения');
-  //     //   });
-  //       navigate("/combination"); //временно
-  //   } 
-  // }
-
   const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     inputRef.current?.blur();
@@ -140,6 +111,12 @@ export const LoginContent: FC = () => {
     } 
   }, [inputValue, navigate]);
 
+  useEffect(() => {
+    if (iosKeyboardHeight > 0) {
+      setKeyboardPadding(24 + iosKeyboardHeight);
+    }
+  }, [iosKeyboardHeight]);
+
   return (
     <>
       {!isLoaded ? <Loader /> : (
@@ -156,8 +133,8 @@ export const LoginContent: FC = () => {
             />
            
             <div className={classes.bottom} style={{ 
-              // marginTop: 'auto', 
-              bottom: `${24 + iosKeyboardHeight}px`, 
+              bottom: `${keyboardPadding}px`, 
+              transition: iosKeyboardHeight > 0 ? 'none' : 'bottom 0.3s ease' 
               // paddingBottom: `${24 + iosKeyboardHeight}px`, 
               // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>  
