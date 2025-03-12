@@ -128,15 +128,14 @@ export const LoginContent: FC = () => {
            
             <div className={classes.bottom} style={{ 
               // marginTop: 'auto', 
-              bottom: `150px`, 
-              // bottom: `${24 + iosKeyboardHeight}px`, 
+              bottom: `${24 + iosKeyboardHeight}px`, 
               // paddingBottom: `${24 + iosKeyboardHeight}px`, 
               // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>  
               <Button
                 text='Играть' 
                 disabled={inputValue === '' ? true : false}  
-                class={`${error ? 'hidden' : ''}`}
+                // class={`${error ? 'hidden' : ''}`}
               />             
               {error && 
                 <Message message={ error } />}
