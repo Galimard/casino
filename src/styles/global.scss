@@ -148,13 +148,13 @@ a:hover {
 }
 
 /* Только для iOS */
-@supports (-webkit-overflow-scrolling: touch) {
-  body {
-    overflow: hidden; /* Блокировка скролла */
-  }
+// @supports (-webkit-overflow-scrolling: touch) {
+//   body {
+//     overflow: hidden; /* Блокировка скролла */
+//   }
 
-  .container {
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-}
+//   .container {
+//     max-height: 100vh;
+//     overflow-y: auto;
+//   }
+// }

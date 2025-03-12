@@ -16,6 +16,15 @@
   height: 100%;
 }
 
+.bottom {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom, 24px);
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+  padding-bottom: 24px;
+}
+
 // @supports (-webkit-touch-callout: none) {
 //   .login {
 //     min-height: calc(100vh - 167px);

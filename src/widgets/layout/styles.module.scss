@@ -14,23 +14,23 @@
 }
 
 .main {
-  padding-top: 56px;
-  // padding-top: 16px;
+  // padding-top: 56px;
+  padding-top: 16px;
   padding-bottom: 24px;
   // min-height: calc(100vh - 97px);
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
+  height: calc(100% - 56px);
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  // overflow-y: auto;
 }
 
 /* Только для iOS */
-@supports (-webkit-overflow-scrolling: touch) {
-  .main {
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-}
+// @supports (-webkit-overflow-scrolling: touch) {
+//   .main {
+//     max-height: 100vh;
+//     overflow-y: auto;
+//   }
+// }

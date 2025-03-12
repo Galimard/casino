@@ -29,16 +29,24 @@ export const LoginContent: FC = () => {
     if (!iosKeyboardHeight) return;
 
     // Функция, предотвращающая дефолтное поведение (прокрутку)
-    const preventScroll = (e) => {
+    const preventScroll = (e: TouchEvent) => {
       e.preventDefault();
     };
 
     // Вешаем обработчик на событие touchmove
-    document.addEventListener('touchmove', preventScroll, { passive: false });
+    document.addEventListener(
+      'touchmove', 
+      preventScroll as EventListener, 
+      { passive: false } as AddEventListenerOptions
+    );
 
     // Убираем обработчик при размонтировании
     return () => {
-      document.removeEventListener('touchmove', preventScroll, { passive: false });
+      document.removeEventListener(
+        'touchmove', 
+        preventScroll as EventListener, 
+        { passive: false } as EventListenerOptions
+      );
     };
   }, [iosKeyboardHeight]);
 
@@ -179,9 +187,9 @@ export const LoginContent: FC = () => {
               error={ errorInput } 
             />
            
-            <div style={{ 
+            <div className={classes.bottom} style={{ 
               marginTop: 'auto', 
-              paddingBottom: `${iosKeyboardHeight}px`, 
+              paddingBottom: `${24 + iosKeyboardHeight}px`, 
               transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>             
               {error ? 
