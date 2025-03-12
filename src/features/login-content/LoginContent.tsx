@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
 import  { useIOsKeyboardHeight }  from  'react-ios-keyboard-viewport' ;
 // import axios from 'axios';
@@ -81,11 +81,40 @@ export const LoginContent: FC = () => {
     if (errorInput !== '') setErrorInput('');
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+
+  //   inputRef.current?.blur();
+
+  //   if (inputValue.length < 4 || inputValue.length > 8) {
+  //     setErrorInput('ID должен содержать от 4 до 8 цифр'); 
+  //   } else { 
+  //     setIsLoaded(false);     
+  //     // const apiUrl = 'https://bitrix-api.mantera.digital';
+
+  //     // axios.post(apiUrl, {
+  //     //   method: 'POST',
+  //     //   id: inputValue
+  //     // })
+  //     //   .then(function (response) {
+  //     //     console.log(response);
+          
+  //     //     setIsLoaded(true);
+  //     //     navigate("/combination");
+  //     //     // setAppState(response.data.result);
+  //     //   })
+  //     //   .catch(function (error) {
+  //     //     console.log(error);
+  //     //     setErrorInput('Ошибка соединения');
+  //     //   });
+  //       navigate("/combination"); //временно
+  //   } 
+  // }
+
+  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     inputRef.current?.blur();
-
+  
     if (inputValue.length < 4 || inputValue.length > 8) {
       setErrorInput('ID должен содержать от 4 до 8 цифр'); 
     } else { 
@@ -109,7 +138,7 @@ export const LoginContent: FC = () => {
       //   });
         navigate("/combination"); //временно
     } 
-  }
+  }, [inputValue, navigate]);
 
   return (
     <>
@@ -134,8 +163,8 @@ export const LoginContent: FC = () => {
             }}>  
               <Button
                 text='Играть' 
-                // disabled={inputValue === '' ? true : false}  
-                // class={`${error ? 'hidden' : ''}`}
+                disabled={inputValue === '' ? true : false}  
+                class={`${error ? 'hidden' : ''}`}
               />             
               {error && 
                 <Message message={ error } />}

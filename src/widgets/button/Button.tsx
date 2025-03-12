@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Link } from "react-router";
 import classes from './styles.module.scss';
 
@@ -9,9 +9,9 @@ interface ButtonProps {
   class?: string;
 }
 
-export const Button: FC<ButtonProps> = ({ ...props }) => {   
+export const Button: FC<ButtonProps> = memo(({ ...props }) => {     
   console.log(123);
-        
+       
     return (
       <>
         {props.url && props.url !== '' ? 
@@ -37,4 +37,4 @@ export const Button: FC<ButtonProps> = ({ ...props }) => {
         }        
       </>      
     );
-}
+});
