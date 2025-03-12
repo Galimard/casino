@@ -25,22 +25,20 @@ export const LoginContent: FC = () => {
   const navigate = useNavigate();
   const iosKeyboardHeight = useIOsKeyboardHeight();
 
+  //убираем скролл на айфоне
   useEffect(() => {
     if (!iosKeyboardHeight) return;
 
-    // Функция, предотвращающая дефолтное поведение (прокрутку)
     const preventScroll = (e: TouchEvent) => {
       e.preventDefault();
     };
 
-    // Вешаем обработчик на событие touchmove
     document.addEventListener(
       'touchmove', 
       preventScroll as EventListener, 
       { passive: false } as AddEventListenerOptions
     );
 
-    // Убираем обработчик при размонтировании
     return () => {
       document.removeEventListener(
         'touchmove', 
@@ -75,65 +73,6 @@ export const LoginContent: FC = () => {
     }
   }, [errorInput]);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.visualViewport) {
-  //       setIsKeyboardOpen(window.visualViewport.height < window.innerHeight * 0.85);
-  //     }
-  //   };
-
-  //   const handleFocus = () => {
-  //     document.body.style.overflow = "hidden"; // Отключаем скролл при фокусе
-  //     document.documentElement.style.overflow = "hidden";
-  //     console.log('window.innerHeight', window.innerHeight);
-  //   console.log('screen.height', screen.height);
-  //   console.log('window.visualViewport', window.visualViewport);
-  //   };
-
-  //   const handleBlur = () => {
-  //     document.body.style.overflow = ""; // Восстанавливаем скролл
-  //     document.documentElement.style.overflow = "";
-  //     console.log('window.innerHeight', window.innerHeight);
-  //   console.log('screen.height', screen.height);
-  //   console.log('window.visualViewport', window.visualViewport);
-  //   };
-
-  //   if (window.visualViewport) {
-  //     window.visualViewport.addEventListener("resize", handleResize);
-  //   }
-
-  //   document.querySelectorAll("input, textarea").forEach((el) => {
-  //     el.addEventListener("focus", handleFocus);
-  //     el.addEventListener("blur", handleBlur);
-  //   });
-
-  //   return () => {
-  //     if (window.visualViewport) {
-  //       window.visualViewport.removeEventListener("resize", handleResize);
-  //     }
-
-  //     document.querySelectorAll("input, textarea").forEach((el) => {
-  //       el.removeEventListener("focus", handleFocus);
-  //       el.removeEventListener("blur", handleBlur);
-  //     });
-  //   };
-    
-  //   // const handleFocus = () => setIsKeyboardOpen(true);
-  //   // const handleBlur = () => setIsKeyboardOpen(false);
-
-  //   // document.querySelectorAll("input").forEach((el) => {
-  //   //   el.addEventListener("focus", handleFocus);
-  //   //   el.addEventListener("blur", handleBlur);
-  //   // });
-
-  //   // return () => {
-  //   //   document.querySelectorAll("input").forEach((el) => {
-  //   //     el.removeEventListener("focus", handleFocus);
-  //   //     el.removeEventListener("blur", handleBlur);
-  //   //   });
-  //   // };
-  // }, []);
-
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) >= 0) setInputValue(event.target.value);
   };
@@ -151,7 +90,7 @@ export const LoginContent: FC = () => {
       setErrorInput('ID должен содержать от 4 до 8 цифр'); 
     } else { 
       setIsLoaded(false);     
-      // const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+      // const apiUrl = 'https://bitrix-api.mantera.digital';
 
       // axios.post(apiUrl, {
       //   method: 'POST',
@@ -188,19 +127,18 @@ export const LoginContent: FC = () => {
             />
            
             <div className={classes.bottom} style={{ 
-              marginTop: 'auto', 
-              paddingBottom: `${24 + iosKeyboardHeight}px`, 
-              transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
+              // marginTop: 'auto', 
+              bottom: `${24 + iosKeyboardHeight}px`, 
+              // paddingBottom: `${24 + iosKeyboardHeight}px`, 
+              // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>             
               {error ? 
                 <Message message={ error } /> : (
-                // <div className={`${isKeyboardOpen ? "raised" : "down"}`}>
-                  <Button
-                    text='Играть' 
-                    disabled={inputValue === '' ? true : false}  
-                    class={`login-btn`}
-                  />
-                // </div>                
+                <Button
+                  text='Играть' 
+                  disabled={inputValue === '' ? true : false}  
+                  class={`login-btn`}
+                />              
               )}
             </div>
           </form>      
