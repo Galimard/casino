@@ -17,11 +17,18 @@
   position: relative;
 }
 
+.loginBtn {
+  // margin-top: auto;
+  // margin-top: 20px;
+  width: 100%;
+}
+
 .bottom {
-  position: absolute;
+  position: fixed;
+  min-height: 56px;
   // bottom: env(safe-area-inset-bottom, 24px);
-  left: 0;
-  right: 0;
+  left: 16px;
+  right: 16px;
   z-index: 1000;
   // padding-bottom: 24px;
 }

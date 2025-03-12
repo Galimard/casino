@@ -24,7 +24,8 @@ export const LoginContent: FC = () => {
   const [error, setError] = useState<ErrorMessage | null>(null);
   const navigate = useNavigate();
   const iosKeyboardHeight = useIOsKeyboardHeight();
-
+  console.log(error);
+  
   //убираем скролл на айфоне
   useEffect(() => {
     if (!iosKeyboardHeight) return;
@@ -131,15 +132,14 @@ export const LoginContent: FC = () => {
               bottom: `${24 + iosKeyboardHeight}px`, 
               // paddingBottom: `${24 + iosKeyboardHeight}px`, 
               // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
-            }}>             
-              {error ? 
-                <Message message={ error } /> : (
-                <Button
-                  text='Играть' 
-                  disabled={inputValue === '' ? true : false}  
-                  class={`login-btn`}
-                />              
-              )}
+            }}>  
+              <Button
+                text='Играть' 
+                disabled={inputValue === '' ? true : false}  
+                class={`${error ? 'hidden' : ''}`}
+              />             
+              {error && 
+                <Message message={ error } />}
             </div>
           </form>      
 
