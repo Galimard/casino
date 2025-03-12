@@ -9,9 +9,7 @@ interface ButtonProps {
   class?: string;
 }
 
-export const Button: FC<ButtonProps> = memo(({ ...props }) => {     
-  console.log(123);
-       
+export const Button: FC<ButtonProps> = memo(({ ...props }) => {          
     return (
       <>
         {props.url && props.url !== '' ? 
