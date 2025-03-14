@@ -7,6 +7,7 @@ export const CombinationContent: FC = () => {
   const { combination } = location.state || {};
   const [isFanOut, setIsFanOut] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+console.log(combination);
 
   useEffect(() => {
     const fanOutTimer = setTimeout(() => setIsFanOut(true), 700);

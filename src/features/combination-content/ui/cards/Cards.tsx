@@ -20,7 +20,7 @@ const combinations = [
   },
   {
     name: 'Фулл-хаус',
-    nameBack: 'Фулл хаус',
+    nameBack: 'Фулл Хаус',
     cards: [ten_d, ten_s, ace_h, ten_c, ace_d]
   },
   {
@@ -30,7 +30,7 @@ const combinations = [
   },
   {
     name: 'Флеш-рояль',
-    nameBack: 'Флеш-рояль',
+    nameBack: 'Флеш-Pояль',
     cards: [ten_s, j_s, q_s, k_s, ace_s]
   }
 ]
@@ -43,7 +43,8 @@ interface CardsProps {
 
 const Cards: FC<CardsProps> = ({ combination, isFanOut, isFlipped }) => {
   const comboObject = combinations.find(item => item.nameBack === combination);
-
+  console.log(comboObject);
+  
   if (!comboObject) return null;
 
   return (
