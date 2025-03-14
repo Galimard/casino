@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
 import  { useIOsKeyboardHeight }  from  'react-ios-keyboard-viewport' ;
-// import axios from 'axios';
+import axios from 'axios';
 
 import { Button } from '@widgets/button';
 import { Input } from '@widgets/input';
@@ -16,15 +16,15 @@ interface ErrorMessage {
 }
 
 export const LoginContent: FC = () => {
+  const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isLoaded, setIsLoaded] = useState(true);
-  // const [appState, setAppState] = useState();
   const [inputValue, setInputValue] = useState<string>('');
   const [errorInput, setErrorInput] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [error, setError] = useState<ErrorMessage | null>(null);
-  const navigate = useNavigate();
-  const iosKeyboardHeight = useIOsKeyboardHeight();
   const [keyboardPadding, setKeyboardPadding] = useState(24);
+  const iosKeyboardHeight = useIOsKeyboardHeight();  
   
   //убираем скролл на айфоне
   useEffect(() => {
@@ -61,7 +61,7 @@ export const LoginContent: FC = () => {
       setError({
         icon: 'warning',
         title: 'Повторный ввод ID',
-        text: 'Поздравляем вас с днем рождения! Участие в акции доступно один раз в год. Ваш ID уже был использован 13.09.2024 и вам выпало: «Каре».'
+        text: errorMessage
       });
     } else if (errorInput === 'Ошибка соединения') {
       setError({
@@ -72,7 +72,7 @@ export const LoginContent: FC = () => {
     } else {
       setError(null);
     }
-  }, [errorInput]);
+  }, [errorInput, errorMessage]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) >= 0) setInputValue(event.target.value);
@@ -90,24 +90,30 @@ export const LoginContent: FC = () => {
       setErrorInput('ID должен содержать от 4 до 8 цифр'); 
     } else { 
       setIsLoaded(false);     
-      // const apiUrl = 'https://bitrix-api.mantera.digital';
+      const apiUrl = `https://bitrix-api.mantera.digital/rest/8/i12a3cvefxge9s8y/mdigital_combinationsraffle.combinations?action=addUserCombination&id=${inputValue}`;
+      // const apiUrl = `/api/rest/8/i12a3cvefxge9s8y/mdigital_combinationsraffle.combinations?action=addUserCombination&id=${inputValue}`;
 
-      // axios.post(apiUrl, {
-      //   method: 'POST',
-      //   id: inputValue
-      // })
-      //   .then(function (response) {
-      //     console.log(response);
+      axios.get(apiUrl)
+        .then(function (response) {
+          console.log(response);
           
-      //     setIsLoaded(true);
-      //     navigate("/combination");
-      //     // setAppState(response.data.result);
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //     setErrorInput('Ошибка соединения');
-      //   });
-        navigate("/combination"); //временно
+          if (response.data?.result?.isNew) {
+            navigate("/combination", {
+              state: {
+                combination: response.data.result.item.combination.value,
+                date: response.data.result.item.dateCreate.split(' ')[0]
+              }
+            });
+          } else {
+            setErrorInput('Этот номер уже использовали'); 
+            setErrorMessage(`Поздравляем вас с днем рождения! Участие в акции доступно один раз в год. Ваш ID уже был использован ${response.data?.result?.item.dateCreate.split(' ')[0]} и вам выпало: «${response.data?.result?.item.combination.value}».`);
+          }
+          setIsLoaded(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+          setErrorInput('Ошибка соединения');
+        });
     } 
   }, [inputValue, navigate]);
 

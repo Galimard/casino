@@ -15,18 +15,22 @@ import k_s from '@assets/images/k_s.png';
 const combinations = [
   {
     name: 'Пара',
+    nameBack: 'Пара',
     cards: [j_s, q_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Фулл-хаус',
+    nameBack: 'Фулл хаус',
     cards: [ten_d, ten_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Каре',
+    nameBack: 'Каре',
     cards: [ace_c, ace_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Флеш-рояль',
+    nameBack: 'Флеш-рояль',
     cards: [ten_s, j_s, q_s, k_s, ace_s]
   }
 ]
@@ -38,13 +42,13 @@ interface CardsProps {
 } 
 
 const Cards: FC<CardsProps> = ({ combination, isFanOut, isFlipped }) => {
-  const comboObject = combinations.find(item => item.name === combination);
+  const comboObject = combinations.find(item => item.nameBack === combination);
 
   if (!comboObject) return null;
 
   return (
     <>
-      <h2 className={`${classes.title} ${isFlipped ? classes.show : ''}`}>{ combination }</h2>
+      <h2 className={`${classes.title} ${isFlipped ? classes.show : ''}`}>{ comboObject.name }</h2>
 
       <div className={classes.wrap}>
         {comboObject && comboObject.cards.map((card, idx) => (

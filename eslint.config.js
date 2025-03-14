@@ -23,6 +23,9 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/ban-types': 'off',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
 )
