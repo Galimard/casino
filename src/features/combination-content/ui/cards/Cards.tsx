@@ -43,7 +43,6 @@ interface CardsProps {
 
 const Cards: FC<CardsProps> = ({ combination, isFanOut, isFlipped }) => {
   const comboObject = combinations.find(item => item.nameBack === combination);
-  console.log(comboObject);
   
   if (!comboObject) return null;
 
