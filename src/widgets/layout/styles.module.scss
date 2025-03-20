@@ -1,7 +1,7 @@
 @use "../../styles/forward.scss" as *;
 
 .header {  
-  padding: 9px 0 16px;
+  padding: 9px 0 0;
   text-align: center;
 }
 
@@ -9,28 +9,10 @@
   background: #F4F5F6 url('../../assets/images/bg.png') center top no-repeat;
   background-size: contain;
   height: 100%;
-  // position: relative;
-  // min-height: 100vh;
 }
 
 .main {
-  // padding-top: 56px;
   padding-top: 16px;
   padding-bottom: 24px;
-  // min-height: calc(100vh - 97px);
   height: calc(100% - 56px);
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  // overflow-y: auto;
 }
-
-/* Только для iOS */
-// @supports (-webkit-overflow-scrolling: touch) {
-//   .main {
-//     max-height: 100vh;
-//     overflow-y: auto;
-//   }
-// }

@@ -5,17 +5,11 @@
   background: $cRedLight;
   border-radius: 8px;
   margin-top: 20px;
-  // z-index: 10;
-  // position: sticky;
-  // left: 16px;
-  // right: 16px;
-  // bottom: 30px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  // gap: 12px;
   margin-bottom: 4px;
 }
 
@@ -27,7 +21,7 @@
 }
 
 .text {
-  font-size: 14px;
+  font-size: $fBody2;
   font-weight: $fRegular;
   line-height: 20px;
   padding-left: 34px;

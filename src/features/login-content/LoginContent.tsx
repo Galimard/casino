@@ -101,18 +101,23 @@ export const LoginContent: FC = () => {
             navigate("/combination", {
               state: {
                 combination: response.data.result.item.combination.value,
-                date: response.data.result.item.dateCreate.split(' ')[0]
+                date: response.data.result.item.dateCreate.split(' ')[0],
+                userId: response.data.result.item.userGuestCardId
               }
             });
-          } else {
+          } else {            
             setErrorInput('Этот номер уже использовали'); 
             setErrorMessage(`Поздравляем вас с днем рождения! Участие в акции доступно один раз в год. Ваш ID уже был использован ${response.data?.result?.item.dateCreate.split(' ')[0]} и вам выпало: «${response.data?.result?.item.combination.value}».`);
           }
           setIsLoaded(true);
         })
         .catch(function (error) {
-          console.log(error);
-          setErrorInput('Ошибка соединения');
+          if (error.status === 400) {            
+            setErrorInput('ID не может быть равен 0');
+            setIsLoaded(true);
+          } else {
+            setErrorInput('Ошибка соединения');
+          }          
         });
     } 
   }, [inputValue, navigate]);
@@ -141,8 +146,6 @@ export const LoginContent: FC = () => {
             <div className={classes.bottom} style={{ 
               bottom: `${keyboardPadding}px`, 
               transition: iosKeyboardHeight > 0 ? 'none' : 'bottom 0.3s ease' 
-              // paddingBottom: `${24 + iosKeyboardHeight}px`, 
-              // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>  
               <Button
                 text='Играть' 
