@@ -101,7 +101,8 @@ export const LoginContent: FC = () => {
             navigate("/combination", {
               state: {
                 combination: response.data.result.item.combination.value,
-                date: response.data.result.item.dateCreate.split(' ')[0]
+                date: response.data.result.item.dateCreate.split(' ')[0],
+                userId: response.data.result.item.userGuestCardId
               }
             });
           } else {
@@ -141,8 +142,6 @@ export const LoginContent: FC = () => {
             <div className={classes.bottom} style={{ 
               bottom: `${keyboardPadding}px`, 
               transition: iosKeyboardHeight > 0 ? 'none' : 'bottom 0.3s ease' 
-              // paddingBottom: `${24 + iosKeyboardHeight}px`, 
-              // transition: 'padding-bottom 0.3s ease, margin-top 0.5s ease' 
             }}>  
               <Button
                 text='Играть' 

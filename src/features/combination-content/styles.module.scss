@@ -21,10 +21,6 @@
   transition: opacity 1s;
 }
 
-.show {
-  opacity: 1;
-}
-
 .wrap {
   position: relative;
   max-width: 343px;
@@ -75,4 +71,22 @@
     height: 100%;
     object-fit: contain;
   } 
+}
+
+.id {
+  width: max-content;
+  padding: 8px 16px;
+  color: $cRed;
+  font-size: 20px;
+  font-weight: $fBold;
+  line-height: $lineHeight;
+  border-radius: 24px;
+  border: 1px solid $cRed;
+  margin: 0 auto 16px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.show {
+  opacity: 1;
 }

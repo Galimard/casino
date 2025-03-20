@@ -1,10 +1,6 @@
 @use "../../styles/forward.scss" as *;
 
 .login {
-  // min-height: calc(100vh - 147px);
-  // display: flex;
-  // flex-direction: column;
-  // position: relative;
   display: grid;
   grid-template-rows: 34px 1fr;
   height: 100%;
@@ -20,11 +16,9 @@
 
 .bottom {
   margin-top: auto;
-  // position: fixed;
   min-height: 56px;
   left: 16px;
   right: 16px;
   z-index: 1000;
-  // padding-bottom: env(safe-area-inset-bottom, 24px);
   transition: min-height 0.3s ease;
 }

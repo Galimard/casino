@@ -36,7 +36,7 @@ html,
 body {
   width: 100%;
   font-family: $font;
-  font-size: 14px;
+  font-size: $fBody2;
   line-height: $lineHeight;
   height: 100%;
   margin: 0;
@@ -87,28 +87,28 @@ a:hover {
 }
 
 .typography-h1 {
-  font-size: 28px;
+  font-size: $fTitleH1;
   font-weight: $fBold;
   line-height: $lineHeight;
   text-align: center;
 }
 
 .typography-h2 {
-  font-size: 24px;
+  font-size: $fTitleH2;
   font-weight: $fBold;
   line-height: $lineHeight;
   text-align: center;
 }
 
 .typography-body1 {
-  font-size: 18px;
+  font-size: $fBody1;
   font-weight: $fRegular;
   line-height: $lineHeight;
   text-align: center;
 }
 
 .typography-body2 {
-  font-size: 14px;
+  font-size: $fBody2;
   font-weight: $fRegular;
   line-height: $lineHeight;
 }
@@ -146,15 +146,3 @@ a:hover {
     position: fixed;
   }
 }
-
-/* Только для iOS */
-// @supports (-webkit-overflow-scrolling: touch) {
-//   body {
-//     overflow: hidden; /* Блокировка скролла */
-//   }
-
-//   .container {
-//     max-height: 100vh;
-//     overflow-y: auto;
-//   }
-// }
