@@ -113,7 +113,12 @@ export const LoginContent: FC = () => {
         })
         .catch(function (error) {
           console.log(error);
-          setErrorInput('Ошибка соединения');
+          if (error.status === 400) {            
+            setErrorInput('ID не может быть равен 0');
+            setIsLoaded(true);
+          } else {
+            setErrorInput('Ошибка соединения');
+          }   
         });
     } 
   }, [inputValue, navigate]);
