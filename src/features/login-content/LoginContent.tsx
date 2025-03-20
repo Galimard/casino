@@ -105,15 +105,19 @@ export const LoginContent: FC = () => {
                 userId: response.data.result.item.userGuestCardId
               }
             });
-          } else {
+          } else {            
             setErrorInput('Этот номер уже использовали'); 
             setErrorMessage(`Поздравляем вас с днем рождения! Участие в акции доступно один раз в год. Ваш ID уже был использован ${response.data?.result?.item.dateCreate.split(' ')[0]} и вам выпало: «${response.data?.result?.item.combination.value}».`);
           }
           setIsLoaded(true);
         })
         .catch(function (error) {
-          console.log(error);
-          setErrorInput('Ошибка соединения');
+          if (error.status === 400) {            
+            setErrorInput('ID не может быть равен 0');
+            setIsLoaded(true);
+          } else {
+            setErrorInput('Ошибка соединения');
+          }          
         });
     } 
   }, [inputValue, navigate]);
