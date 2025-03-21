@@ -15,22 +15,22 @@ import k_s from '@assets/images/k_s.png';
 const combinations = [
   {
     name: 'Пара',
-    nameBack: 'Пара',
+    nameBack: 'PAIR',
     cards: [j_s, q_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Фулл-хаус',
-    nameBack: 'Фулл Хаус',
+    nameBack: 'FULL_HOUSE',
     cards: [ten_d, ten_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Каре',
-    nameBack: 'Каре',
+    nameBack: 'FOUR_OF_A_KIND',
     cards: [ace_c, ace_s, ace_h, ten_c, ace_d]
   },
   {
     name: 'Флеш-рояль',
-    nameBack: 'Флеш-Pояль',
+    nameBack: 'ROYAL_FLUSH',
     cards: [ten_s, j_s, q_s, k_s, ace_s]
   }
 ]
