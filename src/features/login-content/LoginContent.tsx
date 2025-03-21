@@ -63,6 +63,12 @@ export const LoginContent: FC = () => {
         title: 'Повторный ввод ID',
         text: errorMessage
       });
+    } else if (errorInput === 'Ошибка') {
+      setError({
+        icon: 'alert',
+        title: 'Ошибка',
+        text: 'Обновите страницу.'
+      });
     } else if (errorInput === 'Ошибка соединения') {
       setError({
         icon: 'alert',
@@ -76,6 +82,16 @@ export const LoginContent: FC = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) >= 0) setInputValue(event.target.value);
+    const value = event.target.value;
+
+    if (/^\d*$/.test(value)) { 
+      setInputValue(value);
+      if (errorInput === 'Вводите только цифры') {
+        setErrorInput('');
+      }
+    } else {
+      setErrorInput('Вводите только цифры');
+    }
   };
 
   const handleInputFocus = () => {
@@ -100,7 +116,7 @@ export const LoginContent: FC = () => {
           if (response.data?.result?.isNew) {
             navigate("/combination", {
               state: {
-                combination: response.data.result.item.combination.value,
+                combination: response.data.result.item.combination.code,
                 date: response.data.result.item.dateCreate.split(' ')[0],
                 userId: response.data.result.item.userGuestCardId
               }
@@ -111,13 +127,31 @@ export const LoginContent: FC = () => {
           }
           setIsLoaded(true);
         })
-        .catch(function (error) {
-          if (error.status === 400) {            
+        .catch(function (error) {          
+          // Проверка на отсутствие интернета
+          if (!navigator.onLine) {
+            setErrorInput('Ошибка соединения');
+            return;
+          }
+
+          // Проверка на недоступность сервера
+          if (
+            !error.response || 
+            error.code === 'ECONNABORTED' ||
+            error.code === 'ERR_NETWORK' || 
+            error.response.status === 500
+          ) {            
+            setErrorInput('Ошибка соединения');
+          } else if (error.response.data.error === 'ERROR_CORE') {
+            setErrorInput('Ошибка');
+          } else if (error.response.data.error === 'PARAMETER_WRONG_TYPE') {         
             setErrorInput('ID не может быть равен 0');
-            setIsLoaded(true);
           } else {
             setErrorInput('Ошибка соединения');
-          }          
+          }         
+        })
+        .finally(() => {
+          setIsLoaded(true);
         });
     } 
   }, [inputValue, navigate]);
