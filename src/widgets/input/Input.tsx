@@ -20,6 +20,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           onFocus={onFocus}
           type='number'
+          pattern="\\d*"
+          inputMode="numeric"
           minLength={4}
           maxLength={8}
         /> 
